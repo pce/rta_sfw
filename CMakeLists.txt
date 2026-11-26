@@ -13,8 +13,10 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
     set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Build type" FORCE)
 endif()
 
-option(RTA_BUILD_RAYLIB "Build Raylib example" ON)
-option(RTA_BUILD_SDL3   "Build SDL3 example" ON)
+
+option(RTA_BUILD_RAYLIB    "Build Raylib example" ON)
+option(RTA_BUILD_3D_SHADER "Build 3D topographic flight-shader Raylib example" ON)
+option(RTA_BUILD_SDL3      "Build SDL3 example" ON)
 
 include(FetchContent)
 set(FETCHCONTENT_BASE_DIR "${CMAKE_BINARY_DIR}/deps" CACHE PATH "Fetched dependencies directory" FORCE)
@@ -53,6 +55,15 @@ if(RTA_BUILD_RAYLIB)
     if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
         target_compile_options(rta_raylib_simple PRIVATE -Wall -Wextra -Wpedantic)
     endif()
+
+    if(RTA_BUILD_3D_SHADER)
+        add_executable(rta_raylib_flight_shader examples/raylib/flight_terrain_shader.c)
+        target_link_libraries(rta_raylib_flight_shader PRIVATE rta_sfw raylib)
+        if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+            target_compile_options(rta_raylib_flight_shader PRIVATE -Wall -Wextra -Wpedantic)
+        endif()
+    endif()
+
 endif()
 
 # --- SDL3 Example ---

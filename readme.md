@@ -1,12 +1,11 @@
 
 
-Prototype of a 
+Prototype of a RealTimeAudio (RTA) 
 
 # Software Frequency-Band Warping (RTA-SFW)
 
 Real-Time Topographic Soundstage, 
 Cross-Modulation Patch Matrix, and C-Operator Architecture
-
 
 Practical Examples includes a Finalizer and a Test Terrain Flight Simulation.
 
@@ -34,20 +33,21 @@ cmake -B build -DCMAKE_C_STANDARD=23
 cmake --build build -j
 ```
 
+## SDL Finalizer
 
-# Live mic/line-in with matrix & visualization; press R to record, V for viz-only
+
+
+Live mic/line-in with matrix & visualization; press R to record, V for viz-only
 ```
 ./build/rta_sdl3_live --out out_live.wav
 ```
 
-# Feed a WAV file, run Techno Pumper preset at 0.65 flight, save finalized WAV
+Feed a WAV file, run Techno Pumper preset at 0.65 flight, save finalized WAV
 ```
 ./build/rta_sdl3_live --in assets/input.wav --out finalized_techno.wav --preset 1 --flight 0.65
 ```
 
-## SDL Finalizer
-
-```
+``
 cmake --build build -j
 
 # Studio 54 baseline with gentle flight tilt
