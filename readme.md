@@ -47,7 +47,7 @@ Feed a WAV file, run Techno Pumper preset at 0.65 flight, save finalized WAV
 ./build/rta_sdl3_live --in assets/input.wav --out finalized_techno.wav --preset 1 --flight 0.65
 ```
 
-``
+```
 cmake --build build -j
 
 # Studio 54 baseline with gentle flight tilt
