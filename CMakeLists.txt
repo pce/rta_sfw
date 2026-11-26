@@ -58,11 +58,15 @@ if(RTA_BUILD_RAYLIB)
 
     if(RTA_BUILD_3D_SHADER)
         add_executable(rta_raylib_flight_shader examples/raylib/flight_terrain_shader.c)
+        target_include_directories(rta_raylib_flight_shader PRIVATE
+            "${CMAKE_CURRENT_SOURCE_DIR}/examples/raylib"
+        )
         target_link_libraries(rta_raylib_flight_shader PRIVATE rta_sfw raylib)
         if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
             target_compile_options(rta_raylib_flight_shader PRIVATE -Wall -Wextra -Wpedantic)
         endif()
     endif()
+
 
 endif()
 
